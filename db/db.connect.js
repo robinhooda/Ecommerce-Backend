@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
+require('dotenv/config')
 
 //connection to DB
+const db = process.env.DB_URI
 
 const initializeDB = () =>
   mongoose
