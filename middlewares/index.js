@@ -1,5 +1,5 @@
-const { errorHandler } = require('./middlewares/error-handler.middleware')
+const { errorHandler } = require('./error-handler.middleware')
 
-const { routeNotFound } = require('./middlewares/route-not-found.middleware')
+const { routeNotFound } = require('./route-not-found.middleware')
 
 module.exports = { errorHandler, routeNotFound }
