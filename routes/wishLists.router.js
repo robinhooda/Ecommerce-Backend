@@ -1,37 +1,22 @@
 const express = require('express')
 const router = express.Router()
-const WishList = require('../models/WishList')
-const { extend } = require('lodash')
 const {
   getAllWishLists,
   addNewWishList,
   getWishListById,
   updateWishListById,
-  deleteWishListById,
+  deleteWishListById
 } = require('../controllers/wishList.controller')
+const {
+  wishListParamHandler
+} = require('../controllers/paramHandlers.controller')
 
 router
     .route('/')
     .get(getAllWishLists)
     .post(addNewWishList)
 
-router.param('wishListId', async (req, res, next, wishListId) => {
-  try {
-    const wishList = await WishList.findById(wishListId)
-
-    if (!wishList) {
-      return res
-        .status(400)
-        .json({ success: false, message: 'error getting wishList' })
-    }
-    req.wishList = wishList
-    next()
-  } catch {
-    res
-      .status(400)
-      .json({ success: false, message: 'error while retriving the wishList' })
-  }
-})
+router.param('wishListId', wishListParamHandler)
 
 router
   .route('/:wishListId')
