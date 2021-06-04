@@ -7,7 +7,9 @@ const {
   updateCategoryById,
   deleteCategoryById,
 } = require('../controllers/category.controller')
-const { categoryParamHandler } = require('../models/Category')
+const {
+  categoryParamHandler,
+} = require('../controllers/paramHandlers.controller')
 
 router
     .route('/')
