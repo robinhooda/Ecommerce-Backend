@@ -1,4 +1,4 @@
-const WishList = require('../models/WishList')
+const WishList = require('../models/wishList.model')
 const { extend } = require('lodash')
 
 const getAllWishLists = async (req, res) => {

@@ -1,7 +1,7 @@
-const Cart = require('../models/Cart')
-const Category = require('../models/Category')
-const Product = require('../models/Product')
-const WishList = require('../models/WishList')
+const Cart = require('../models/cart.model')
+const Category = require('../models/category.model')
+const Product = require('../models/product.model')
+const WishList = require('../models/wishList.model')
 
 const cartParamHandler = async (req, res, next, cartId) => {
   try {
