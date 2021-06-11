@@ -1,7 +1,3 @@
-// const mongoose = require('mongoose')
-
-// const { Schema } = mongoose
-
 const { Schema, model } = require('mongoose')
 
 const userSchema = new Schema({
@@ -40,7 +36,3 @@ const userSchema = new Schema({
 
 const User = model('User', userSchema)
 module.exports = User
-
-// to do-
-// min vs minlength
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMzMzhmNTFlYzU1M2JlY2RmYTIzYTIiLCJleHBpcmUiOiIxMDAwIiwiaWF0IjoxNjIzNDA2ODkyfQ.9Gej_yC6dg4GnVhycMw6mg0bjuSN8UrXbHRwZ80oSTY
