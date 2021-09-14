@@ -26,18 +26,6 @@ const userSchema = new Schema({
     min: 6,
     max: 255,
   },
-  cart: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Cart',
-    },
-  ],
-  wishList: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'WishList',
-    },
-  ],
 })
 
 const User = model('User', userSchema)
