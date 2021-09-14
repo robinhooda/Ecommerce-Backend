@@ -25,7 +25,7 @@ app.use('/login', loginV1)
 app.use('/signup', signUpV1)
 app.use('/products', productsV1)
 app.use('/categories', categoriesV1)
-app.use('/wishLists', auth, wishListsV1)
+app.use('/wishlist',auth,  wishListsV1)
 app.use('/cart', auth, cartV1)
 
 app.get('/', (request, response) => {

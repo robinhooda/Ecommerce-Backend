@@ -42,6 +42,11 @@ const productSchema = new Schema(
       type: Boolean,
       required: true,
     },
+    isNewStock: {
+      type: Boolean,
+      required: true,
+    },
+
   },
   {
     timestamps: true,

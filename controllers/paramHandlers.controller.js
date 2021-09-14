@@ -74,6 +74,7 @@ const wishListParamHandler = async (req, res, next, wishListId) => {
   }
 }
 
+
 module.exports = {
   cartParamHandler,
   categoryParamHandler,

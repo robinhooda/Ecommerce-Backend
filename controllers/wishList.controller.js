@@ -3,10 +3,11 @@ const { extend } = require('lodash')
 
 const getAllWishLists = async (req, res) => {
   try {
-    const wishLists = await WishList.find()
-      .populate('products', 'name price')
-      .select('_id products name')
-    res.json({ success: true, wishLists })
+    const userId = req.user._id
+    const wishList = await WishList.findOne({ _id: userId }).populate(
+      'wishlistItems'
+    )
+    res.json({ success: true, wishList })
   } catch (err) {
     res.status(500).json({
       success: false,
@@ -16,9 +17,15 @@ const getAllWishLists = async (req, res) => {
   }
 }
 
-const addNewWishList = async (req, res) => {
-  const wishList = new WishList(req.body)
+const updateWishList = async (req, res) => {
+  const updatedWishlistArr = req.body
+  console.log(updatedWishlistArr)
   try {
+    const userId = req.user._id
+    let wishList = await WishList.findOne({ _id: userId })
+    wishList.wishlistItems = updatedWishlistArr
+    console.log({ wishList })
+
     const savedWishList = await wishList.save()
     res.json({ WishList: savedWishList, success: true })
   } catch (err) {
@@ -40,7 +47,10 @@ const updateWishListById = async (req, res) => {
   const updatedWishList = req.body
   let { wishList } = req
   try {
-    wishList.products = [...wishList.products, ...updatedWishList.products]
+    wishList.wishlistItems = [
+      ...wishList.wishlistItems,
+      ...updatedWishList.wishlistItems,
+    ]
 
     wishList = await wishList.save()
     res.json({ success: true, wishList: wishList })
@@ -63,7 +73,7 @@ const deleteWishListById = async (req, res) => {
 
 module.exports = {
   getAllWishLists,
-  addNewWishList,
+  updateWishList,
   getWishListById,
   updateWishListById,
   deleteWishListById,

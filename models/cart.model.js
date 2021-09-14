@@ -4,13 +4,24 @@ const { Schema } = mongoose
 
 const cartSchema = new Schema(
   {
-    products: [
+    _id: {
+      type: String,
+    },
+    cartItems: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product',
+        product: {
+          type: Schema.Types.ObjectId,
+          ref: 'Product',
+        },
+        quantity: {
+          type: Number,
+          default: 1,
+          required: 'Please enter quantity to the cartItem',
+        },
       },
     ],
   },
+
   {
     timestamps: true,
   }

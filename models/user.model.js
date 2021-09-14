@@ -1,10 +1,16 @@
 const { Schema, model } = require('mongoose')
 
 const userSchema = new Schema({
-  name: {
+  firstName: {
     type: String,
-    required: 'Please enter valid name to continue!',
-    minlength: 6,
+    required: 'Please enter valid first name to continue!',
+    minlength: 3,
+    maxlength: 255,
+  },
+  lastName: {
+    type: String,
+    required: 'Please enter valid last name to continue!',
+    minlength: 3,
     maxlength: 255,
   },
   email: {

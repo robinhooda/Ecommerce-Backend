@@ -2,19 +2,16 @@ const express = require('express')
 const router = express.Router()
 const {
   getAllWishLists,
-  addNewWishList,
+  updateWishList,
   getWishListById,
   updateWishListById,
-  deleteWishListById
+  deleteWishListById,
 } = require('../controllers/wishList.controller')
 const {
-  wishListParamHandler
+  wishListParamHandler,
 } = require('../controllers/paramHandlers.controller')
 
-router
-    .route('/')
-    .get(getAllWishLists)
-    .post(addNewWishList)
+router.route('/').get(getAllWishLists).post(updateWishList)
 
 router.param('wishListId', wishListParamHandler)
 

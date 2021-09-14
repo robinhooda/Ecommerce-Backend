@@ -1,18 +1,15 @@
 const express = require('express')
 const router = express.Router()
 const {
-  getAllCarts,
+  getCart,
   getCartById,
-  addNewCart,
+  updateCart,
   updateCartById,
   deleteCartById,
 } = require('../controllers/cart.controller')
 const { cartParamHandler } = require('../controllers/paramHandlers.controller')
 
-router
-    .route('/')
-    .get(getAllCarts)
-    .post(addNewCart)
+router.route('/').get(getCart).post(updateCart)
 
 router.param('cartId', cartParamHandler)
 
